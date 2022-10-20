@@ -57,6 +57,6 @@ def update_self():
         if if_download==False:
             print("Lost connection file wasn't downloaded")
     else:
-        print("App is current")
+        print("Updater is current")
 
 
