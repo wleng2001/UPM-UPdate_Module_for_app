@@ -10,8 +10,7 @@ import requests
 #variables----------------------
 last_update="2022-10-20"
 repo_name="UPM-UPdate_Module_for_app"
-url="https://raw.rawgit.net/wleng2001/UPM-UPdate_Module_for_app/43c899dae7b557b6885f7ded46aff353740ad66d/UPDATE_MODULE.py"
-#new_version_name="UPDATE_MODULE_"+str(datetime.now().date())+".py"
+url="https://raw.rawgit.net/wleng2001/UPM-UPdate_Module_for_app/main/UPDATE_MODULE.py"
 new_version_name="UPDATE_MODULE.py"
 #update check-------------------
 def update_check(last_update, repo_name):
