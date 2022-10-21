@@ -12,9 +12,10 @@ sudo apt-get install python3-pip
 echo "Installing git"
 sudo apt-get install git
 
-for i in "${library_t[*]}"};
+for i in ${library_t[*]};
 do
 	echo Installing $i;
+	echo \n
 	sudo pip3 install $i;
 done
 echo "Everything was installed"
