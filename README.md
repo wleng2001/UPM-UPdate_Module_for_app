@@ -138,22 +138,22 @@ Finally If you don't have gitdb, typing_extensions, pygithub and gitpython you c
 
 *example.py* include simply example, which download <a href="https://github.com/wleng2001/PNG-Prime_Number_Generator">PNG</a> program.
 If you want check, that is required new version of app you should use the fucntion:
-#### `update_check(`*last_update*`,` *repo_name*`)`
+#### `update_check( last_update, repo_name)`
 *Last_update* is argument, which takes date of last update app in format YYYY-MM-DD
 *repo_name* is argument, which takes repo name (in example it was *PNG-Prime_Number_Generator*)
 
 If you want to download file from repository you should use:
-#### `download_update_file(`*url*','*path*','*file_name*`)`
+#### `download_update_file( url,'path, file_name)`
 where *url* is url to raw format file (you can take it from for example rawgit.net).
 *path* is location on your computer where you want to download file.
 
 If you want to download repository you should use:
-#### `download_update_repo(`*url*','*path*)`
+#### `download_update_repo( url, path)`
 where *url* is url to github repository (in example it was *https://github.com/wleng2001/PNG-Prime_Number_Generator*).
 *path* is location on your computer where you want to download repository.
 
 If you want to update UPM you should use the function:
-#### `update_self(`*terminal_mode*')`
+#### `update_self( terminal_mode)`
 It checks, and ask you about insalling new version of updater:
 ####
 ````
