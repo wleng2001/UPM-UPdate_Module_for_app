@@ -13,9 +13,8 @@ echo "Installing git"
 sudo apt-get install git
 
 for i in ${library_t[*]};
-do
-	echo Installing $i;
-	echo \n
+do	
+	echo -e "\nInstalling "$i"\n";
 	sudo pip3 install $i;
 done
 echo "Everything was installed"
