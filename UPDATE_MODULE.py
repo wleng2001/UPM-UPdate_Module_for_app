@@ -8,7 +8,7 @@ import git
 from os import getcwd
 import requests
 #variables----------------------
-last_update="2022-10-20"
+last_update="2022-10-21"
 repo_name="UPM-UPdate_Module_for_app"
 url="https://raw.rawgit.net/wleng2001/UPM-UPdate_Module_for_app/main/UPDATE_MODULE.py"
 new_version_name="UPDATE_MODULE.py"
@@ -43,20 +43,22 @@ def download_update_file(url, path, file_name): #url must be in raw format for e
     except:
         return False
     
-def update_self():
-    update_available=update_check(last_update, repo_name)
-    if update_available==None:
-        print("You don't have internet connection.")
-    elif update_available==True:
-        print("Update of update module is available!")
-        ask=input("Do you want download it now (Y/n): ")
-        ask=ask.upper()
-        if_download=None
-        if ask=="Y":
-            if_download=download_update_file(url,getcwd(), new_version_name)
-        if if_download==False:
-            print("Lost connection file wasn't downloaded")
-    else:
-        print("Updater is current")
+def update_self(terminal_mode=True):
+    if terminal_mode==True or terminal_mode==False:
+        update_available=update_check(last_update, repo_name)
+        if update_available==None:
+            print("You don't have internet connection.")
+        elif update_available==True:
+            print("Update of updater is available!")
+            ask=input("Do you want download it now (Y/n): ")
+            ask=ask.upper()
+            if_download=None
+            if ask=="Y":
+                if_download=download_update_file(url,getcwd(), new_version_name)
+                print("Updater was updated.")
+            if if_download==False:
+                print("Lost connection file wasn't downloaded")
+        else:
+            print("Updater is current")
 
 
