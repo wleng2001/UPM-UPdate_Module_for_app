@@ -1,5 +1,6 @@
 #example for UPM
 import UPDATE_MODULE
+UPDATE_MODULE.admin() #it availables to move files after download
 from os import getcwd
 
 UPDATE_MODULE.update_self()

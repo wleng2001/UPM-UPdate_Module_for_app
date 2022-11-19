@@ -11,7 +11,7 @@ from sys import platform, executable, argv
 import ctypes
 import requests
 #variables----------------------
-last_update="2022-11-18"
+last_update="2022-11-19"
 repo_name="UPM-UPdate_Module_for_app"
 url="https://raw.rawgit.net/wleng2001/UPM-UPdate_Module_for_app/main/UPDATE_MODULE.py"
 new_version_name="UPDATE_MODULE.py"
@@ -19,11 +19,13 @@ new_version_name="UPDATE_MODULE.py"
 def admin():#put it in second line after import UPDATE_MODULE.py
     try:
         ctypes.windll.shell32.IsUserAnAdmin()
-    except:
         try:
             ctypes.windll.shell32.ShellExecuteW(None, "runas", executable, " ".join(argv), None, 1)
         except:
             pass
+    except:
+        pass
+
 #update check-------------------
 def update_check(last_update, repo_name):
     last_date=datetime.fromisoformat(last_update)
@@ -137,9 +139,3 @@ def update_self(terminal_mode=True):
                 print("Lost connection file wasn't downloaded")
         else:
             print("Updater is current")
-
-    
-
-
-
-
