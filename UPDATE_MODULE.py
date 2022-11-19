@@ -16,15 +16,9 @@ repo_name="UPM-UPdate_Module_for_app"
 url="https://raw.rawgit.net/wleng2001/UPM-UPdate_Module_for_app/main/UPDATE_MODULE.py"
 new_version_name="UPDATE_MODULE.py"
 #turn on admin permission
-def admin():#put it in second line after import UPDATE_MODULE.py
-    try:
-        ctypes.windll.shell32.IsUserAnAdmin()
-        try:
-            ctypes.windll.shell32.ShellExecuteW(None, "runas", executable, " ".join(argv), None, 1)
-        except:
-            pass
-    except:
-        pass
+def admin():#put it in second line after import UPDATE_MODULE
+    if ctypes.windll.shell32.IsUserAnAdmin()==False:
+        ctypes.windll.shell32.ShellExecuteW(None, "runas", executable, " ".join(argv), None, 1)
 
 #update check-------------------
 def update_check(last_update, repo_name):
