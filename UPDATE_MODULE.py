@@ -18,8 +18,11 @@ new_version_name="UPDATE_MODULE.py"
 #turn on admin permission
 def admin():#put it in second line after import UPDATE_MODULE
     if ctypes.windll.shell32.IsUserAnAdmin()==False:
-        ctypes.windll.shell32.ShellExecuteW(None, "runas", executable, " ".join(argv), None, 1)
-        quit()
+        try:
+            ctypes.windll.shell32.ShellExecuteW(None, "runas", executable, " ".join(argv), None, 1)
+            quit()
+        except:
+            pass
 
 #update check-------------------
 def update_check(last_update, repo_name):
