@@ -10,8 +10,9 @@ from shutil import rmtree
 from sys import platform, executable, argv
 import ctypes
 import requests
+from  zipfile import ZipFile
 #variables----------------------
-last_update="2022-11-19"
+last_update="2022-11-30"
 repo_name="UPM-UPdate_Module_for_app"
 url="https://raw.rawgit.net/wleng2001/UPM-UPdate_Module_for_app/main/UPDATE_MODULE.py"
 new_version_name="UPDATE_MODULE.py"
@@ -97,15 +98,24 @@ def move_files(file_path, destination, files=[]): #You don't have to give, which
                 rename(file_path+file_sep+i, destination+file_sep+i)
 
 #download update
-def download_update_repo(url, path):#if you don't want to move all files you can add to files in your repo file "files_to_move.txt", which will be include files to move separate by ", "
-    folder=url.split('/')[-1]
+def download_update_repo(url,path):#if you don't want to move all files you can add to files in your repo file "files_to_move.txt", which will be include files to move separate by ", "
     file_sep=find_os_f_s()
     next=False
-    try:
-        git.Git(path).clone(url)
+    if "codeload." in url:
+        folder=url.split('/')[-5]
+        r=requests.get(url, allow_redirects=True)
+        open(path+file_sep+folder+'.zip', 'wb').write(r.content)
+        with ZipFile(path+file_sep+folder+'.zip', 'r') as zip_object:
+            zip_object.extractall(path, members=None, pwd=None)
         next=True
-    except:        
-        return False
+        folder+='-main'
+    else:
+        try:
+            folder=url.split('/')[-1]
+            git.Git(path).clone(url)
+            next=True
+        except:        
+            return False
     if next==True:
         try:
             files=open(path+file_sep+folder+file_sep+"files_to_move.txt",'r').read().split(', ')
@@ -113,6 +123,7 @@ def download_update_repo(url, path):#if you don't want to move all files you can
             files=[]
         move_files(path+file_sep+folder, path, files)
         remove_d_f(path+file_sep+folder)
+        remove_d_f(path+file_sep+folder[:-5]+'.zip')
         print(f'Please remove manually "{path+file_sep+folder}" folder')
         return True
 
