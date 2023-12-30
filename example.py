@@ -1,9 +1,9 @@
 #example for UPM
 import UPDATE_MODULE
-UPDATE_MODULE.admin() #it availables to move files after download
+#UPDATE_MODULE.admin() #it availables to move files after download
 from os import getcwd
 
-UPDATE_MODULE.update_self()
+UPDATE_MODULE.update_self(True) #updater in terminal mode
 
 update_available=UPDATE_MODULE.update_check("2022-10-13", "PNG-Prime_Number_Generator")
 if update_available==None:
