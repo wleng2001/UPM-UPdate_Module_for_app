@@ -14,7 +14,7 @@ from  zipfile import ZipFile
 import tkinter as tk
 from tkinter import messagebox as msg
 #variables----------------------
-last_update="2023-12-30"
+last_update="2023-12-31"
 repo_name="UPM-UPdate_Module_for_app"
 url="https://raw.rawgit.net/wleng2001/UPM-UPdate_Module_for_app/main/UPDATE_MODULE.py"
 new_version_name="UPDATE_MODULE.py"
